@@ -13,13 +13,17 @@
     * $\frac{dr}{dt} = v$ 
 
 * ODE for Velocity
- * $\frac{dr}{dt} = v$
+   * $\frac{dv}{dt} = a$
 
 ### Initial Condition
 * Earth is at its Perihelion (closest to Sun)
 
-# Setup
-1. `git clone <link>`
-2. Update the `config.json` file 
-3. Run `earth.py`
+# Setup to run for any Planet
+1. Clone the Repository:- `https://github.com/SpartificialUdemy/PSA.git`
+2. Change into the project directory:- cd "M5 - Earth's Orbit around the Sun"
+4. Install `requirements.txt`:- pip install -r requirements.txt
+
+# Useage
+1. Change the Simulation Configuration thorough [`config.json`](https://github.com/SpartificialUdemy/PSA/blob/main/M5%20-%20Earth's%20Orbit%20around%20the%20Sun/config.json)
+2. Run through terminal:- `python earth.py`
 
