@@ -52,5 +52,32 @@ r[0], v[0] = r_0, v_0
 def accn(r):
     return (-G*M_sun / np.linalg.norm(r)**3) * r
 
-print(accn(r_0))
+# Euler Integration
+def euler_method(r, v, accn, dt):
+    """
+    Equations for euler method
+    ---------------------------
+    ODE for Position
+    --> dr/dt = v 
+    --> r_new = r_old + v_old*dt
+
+    ODE for Velocity
+    --> dv/dt = a 
+    --> v_new = v_old + a(r_old)*dt
+
+    Parameters
+    ----------
+    r: empty array for position of size t
+    v: empty array for velocity of size t
+    a: func to calculate the accn at give position
+    dt: time step for the simulation
+
+    This function will update the empty arrays for r and v with the simulated data
+    """
+
+    for i in range(1, len(t)):
+        r[i] = r[i-1] + v[i-1] * dt
+        v[i] = v[i-1] + accn(r[i-1]) * dt
+
+
 
