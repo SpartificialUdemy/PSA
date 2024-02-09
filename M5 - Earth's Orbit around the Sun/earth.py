@@ -47,3 +47,10 @@ v = np.empty(shape=(len(t), 2))
 
 # Set the Initial conditions for position and velociity
 r[0], v[0] = r_0, v_0
+
+# Define the function that gets us the accn vector when passed in the position vector
+def accn(r):
+    return (-G*M_sun / np.linalg.norm(r)**3) * r
+
+print(accn(r_0))
+
