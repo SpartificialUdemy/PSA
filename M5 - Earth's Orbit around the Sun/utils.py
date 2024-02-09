@@ -12,6 +12,7 @@ def read_json_config(file_path):
     Returns:
     - dict: A dictionary containing the configuration data.
     """
+    # Load the JSON file for Configuration
     with open(file_path, 'r') as file:
         config_data = json.load(file)
     return config_data
