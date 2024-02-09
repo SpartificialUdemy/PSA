@@ -1,0 +1,13 @@
+{
+  "initial_conditions": {
+    "r_0": [147.1e9, 0],
+    "v_0": [0, -30.29e3]
+  },
+  "time_settings": {
+    "dt": 3600,
+    "t_max": 3.154e7
+  },
+  "numerical_integration": {
+    "method": "Euler"
+  }
+}
