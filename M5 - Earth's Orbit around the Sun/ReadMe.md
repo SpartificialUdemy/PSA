@@ -18,7 +18,8 @@
 ## Initial Condition
 * Earth is at its Perihelion (closest to Sun)
 
-<img src="earth_orbit.png" alt="Orbit of the Earth" width=65%>
+## Simulated Output
+<img src="earth_orbit.png" alt="Orbit of the Earth" width=50%>
 
 ---
 
