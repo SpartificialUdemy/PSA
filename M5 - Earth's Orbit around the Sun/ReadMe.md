@@ -4,9 +4,7 @@
 * Use Euler and Runge - Kutta method of 4th order (RK4) for this task.
 * Find the distance from Earth to Sun at Apogee using Euler and RK4 method and compare it with the original.
 
-<img src="earth_orbit.png" alt="Orbit of the Earth" width=65%>
-
-### Given Equations
+## Given Equations
 
 * Accn of Earth due to Gravity of the Sun 
     * $a = -\frac{GM}{|r|^3}\times\vec{r}$
@@ -17,8 +15,12 @@
 * ODE for Velocity
    * $\frac{dv}{dt} = a$
 
-### Initial Condition
+## Initial Condition
 * Earth is at its Perihelion (closest to Sun)
+
+<img src="earth_orbit.png" alt="Orbit of the Earth" width=65%>
+
+---
 
 # Setup to run for any Planet
 1. Clone the Repository:- `https://github.com/SpartificialUdemy/PSA.git`
