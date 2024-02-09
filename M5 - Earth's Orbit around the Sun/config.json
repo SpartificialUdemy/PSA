@@ -8,6 +8,6 @@
     "t_max": 3.154e7
   },
   "numerical_integration": {
-    "method": "Euler"
+    "method": "RK4"
   }
 }
