@@ -19,7 +19,7 @@
    * Earth is at its Perihelion (closest to Sun)
    
    ## 1.3) Simulated Output
-<img src="earth_orbit.png" alt="Orbit of the Earth" width=50%>
+<img src="data/earth_orbit.png" alt="Orbit of the Earth" width=50%>
 
 
 ---
