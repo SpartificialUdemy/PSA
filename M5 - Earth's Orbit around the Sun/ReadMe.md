@@ -4,6 +4,8 @@
 * Use Euler and Runge - Kutta method of 4th order (RK4) for this task.
 * Find the distance from Earth to Sun at Apogee using Euler and RK4 method and compare it with the original.
 
+![Project Image](earth_orbit.png)
+
 ### Given Equations
 
 * Accn of Earth due to Gravity of the Sun 
