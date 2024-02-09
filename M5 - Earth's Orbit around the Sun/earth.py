@@ -1,5 +1,4 @@
 # Imports
-import argparse
 from utils import read_json_config, accn, numerical_integration, at_aphelion, plot_simulated_data
 import numpy as np
 
