@@ -24,22 +24,33 @@
 
 ---
 
-# 2) Setup to run for any Planet
+# 2) Setup:- Simulate any Planet's Orbit in our Solar System
 1. Clone the Repository:- `https://github.com/SpartificialUdemy/PSA.git`
 2. Change into the project directory:- cd "M5 - Earth's Orbit around the Sun"
 4. Install `requirements.txt`:- pip install -r requirements.txt
+5. <a href="#useage">Configure</a> the Simulation Parameters using `config.json`
+6. Run the `main.py` file
+7. Simply, change the Silumation Parameters to simulate different Planets in our Solar System
 
 ---
 
-# 3) Useage
-1. Change the Simulation Configuration thorough [`config.json`](https://github.com/SpartificialUdemy/PSA/blob/main/M5%20-%20Earth's%20Orbit%20around%20the%20Sun/data/config.json)              
-**a.** `r_0`: Position vector at the Planet's Perihelion              
-**b.** `v_0`: Velocity vector at the Planet's Perihelion           
-**c.** `dt`: Time Steps for the Simulation          
-**d.** `t_max`: Total time of the Simulation                             
-**e.** `method`: Numerical Integration Method (either "RK4" or "Euler')             
+# <h1 id='useage'>3) Understanding `config.json` for Simulation Parameters</h1>
+Change the Simulation Parameters using [`config.json`](https://github.com/SpartificialUdemy/PSA/blob/main/M5%20-%20Earth's%20Orbit%20around%20the%20Sun/config.json):-              
+   **a)** Planet Info:
+      * `name`: The name of the Planet to Display on the Plot.
+      * `perihelion_color`: The color to give to the Planet at its Perihelion.         
+      * `aphelion_color`: The color to give to the Planet at its Aphelion.  
 
-2. Run and Simulate the Orbit of Planet around the Sun
+   **b)** Initial Conditions:
+      * `position_at_perihelion`: The closest distance between the Sun and the Planet `(in million km)`.
+      * `velocity_at_perihelion`: The value of speed at the Planet's Perihelion `(in km/s)`.
+
+   **c)** Time Settings:
+      * `time_step`: The steps in the Simulation for updating position and velocity `(in mins)`.
+      * `simulation_time`: The maximum time of the simulation `(in days \rarr 1 day = 24 hours)`.
+
+   **d)** Numerical Integration:
+      * `method`: The method to choose for Numerical Integration `(either "RK4" or "Euler")`.
 
 ---
 
