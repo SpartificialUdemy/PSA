@@ -6,14 +6,14 @@
 
    ## 1.1) Given Equations
 
-   * Accn of Earth due to Gravity of the Sun 
-       * $a = -\frac{GM}{|r|^3}\times\vec{r}$
+   * Accn of Earth due to Gravity of the Sun                    
+       → $a = -\frac{GM}{|r|^3}\times\vec{r}$
    
-   * ODE for Position
-       * $\frac{dr}{dt} = v$ 
+   * ODE for Position                               
+       → $\frac{dr}{dt} = v$ 
    
-   * ODE for Velocity
-      * $\frac{dv}{dt} = a$
+   * ODE for Velocity                  
+      → $\frac{dv}{dt} = a$
    
    ## 1.2) Initial Condition
    * Earth is at its Perihelion (closest to Sun)
