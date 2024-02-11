@@ -192,7 +192,7 @@ def at_aphelion(r, v):
     return arg_aphelion, vel_aphelion, pos_aphelion
 
 def plot_simulated_data(r, method_integration, arg_aphelion,
-                        vel_aphelion, pos_aphelion):
+                        vel_aphelion, pos_aphelion, name_planet, color_peri, color_ap):
     """
     Generate a 3D plot from simulated data representing the orbit of a planet.
 
@@ -202,6 +202,9 @@ def plot_simulated_data(r, method_integration, arg_aphelion,
     - arg_aphelion (int): The index at which the planet is at its Aphelion.
     - vel_aphelion (float): The velocity of the planet at its Aphelion.
     - pos_aphelion (float): The position of the planet at its Aphelion.
+    - name_planet (str): The name of the Planet.
+    - color_peri (str): The color of the marker at Perihelion.
+    - color_ap (str): The color of the marker at Aphelion.
     """
 
     # Setup the Figure and Axis for the Subplot
@@ -214,20 +217,20 @@ def plot_simulated_data(r, method_integration, arg_aphelion,
     plt.suptitle(suptitle_str + ' Method', color='r', fontsize=18, weight='bold')
 
     # Add Title
-    title_str = f'At Aphelion, the Earth is {round(pos_aphelion/1e9, 1)} million km away from the Sun\nMoving at the speed of {round(vel_aphelion/1e3, 1)} km/s.'
+    title_str = f'At Aphelion, the {name_planet} is {round(pos_aphelion/1e9, 1)} million km away from the Sun\nMoving at the speed of {round(vel_aphelion/1e3, 1)} km/s.'
     plt.title(title_str, fontsize=14, color='orange')
 
     # Plot the Orbit, Sun, Earth at Perihelion and Aphelion
     plt.plot(r[:, 0], r[:, 1], color='tab:pink', lw=2, label='Orbit')
     plt.scatter(0, 0, color='yellow', s=1000, label='Sun')
-    plt.scatter(r[0,0], r[0,1], s=200, label='Earth at its Perihelion')
+    plt.scatter(r[0,0], r[0,1], s=200, label='Earth at its Perihelion', color=color_peri)
     plt.scatter(r[arg_aphelion,0], r[arg_aphelion,1], s=200,
-                label='Earth at its Aphelion', color='blue')
+                label='Earth at its Aphelion', color=color_ap)
 
     # Add Legend and Customize it
     legend = plt.legend(loc='lower right', frameon=False)
     for i in range(1, 4):
-        legend.legend_handles[i]._sizes = [150] if not i == 1 else [80]
+        legend.legend_handles[i]._sizes = [150] if i == 1 else [80]
 
     # Turn off the axis and Display the result
     plt.axis('off')
