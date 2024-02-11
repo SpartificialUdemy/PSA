@@ -1,13 +1,3 @@
-
-**1)** <a href="#ps">Problem Statement</a>                            
-   **1.1)** <a href="eqn">Given Equations</a>                      
-   **1.2)** <a href="preihelion">Initial Conditions</a>                
-   **1.3)** <a href="earth_output">Simulated Output</a>                                
-**2)** <a href="setup">Setup:- Simulate any Planet's Orbit in our Solar System</a>       
-**3)** <a href="useage">Understanding `config.json` for Simulation Parameters</a>            
-**4)** <a href="sheet">Simulate any planet of your choice</a>                       
----
-
 # 1) <h1 id="ps">Problem Statement</h1>
 
 * Create a simulation to track the orbit of the Earth around the Sun for a period of 1 year.
