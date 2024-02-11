@@ -25,12 +25,12 @@
 ---
 
 # 2) Setup:- Simulate any Planet's Orbit in our Solar System
-1. Clone the Repository:- `https://github.com/SpartificialUdemy/PSA.git`
-2. Change into the project directory:- cd "M5 - Earth's Orbit around the Sun"
-4. Install `requirements.txt`:- pip install -r requirements.txt
-5. <a href="#useage">Configure</a> the Simulation Parameters using `config.json`
-6. Run the `main.py` file
-7. Simply, change the Silumation Parameters to simulate different Planets in our Solar System
+**1.** Clone the Repository:- `https://github.com/SpartificialUdemy/PSA.git`
+**2.** Change into the project directory:- cd "M5 - Earth's Orbit around the Sun"
+**3.** Install `requirements.txt`:- pip install -r requirements.txt
+**4.** <a href="#useage">Configure</a> the Simulation Parameters using `config.json`
+**5.** Run the `main.py` file
+**6.** Simply, change the Silumation Parameters to simulate different Planets in our Solar System
 
 ---
 
