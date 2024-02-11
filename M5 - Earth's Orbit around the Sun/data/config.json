@@ -1,16 +1,16 @@
 {
   "planet_info": {
-    "name" : "Mars",
-    "perihelion_color" : "red",
-    "aphelion_color" : "maroon"
+    "name" : "Earth",
+    "perihelion_color" : "cyan",
+    "aphelion_color" : "blue"
   },
   "initial_conditions": {
-    "r_0": [206.7e9, 0],
-    "v_0": [0, -26.5e3]
+    "r_0": [147.1e9, 0],
+    "v_0": [0, -30.29e3]
   },
   "time_settings": {
     "dt": 3600,
-    "t_max": 59324800
+    "t_max": 3.154e7
   },
   "numerical_integration": {
     "method": "RK4"
