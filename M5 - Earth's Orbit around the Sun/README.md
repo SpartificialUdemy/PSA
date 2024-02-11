@@ -46,7 +46,7 @@ Change the Simulation Parameters using [`config.json`](https://github.com/Sparti
       * `velocity_at_perihelion`: The value of speed at the Planet's Perihelion `(in km/s)`.
 
    **c)** Time Settings:
-      * `time_step`: The steps in the Simulation for updating position and velocity `(in mins)`.
+      * `time_step`: The steps in the Simulation for updating position and velocity `(in seconds)`.
       * `simulation_time`: The maximum time of the simulation `(in days \rarr 1 day = 24 hours)`.
 
    **d)** Numerical Integration:
