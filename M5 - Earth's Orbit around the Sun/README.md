@@ -7,7 +7,7 @@
    ## 1.1) Given Equations
 
    * Accn of Earth due to Gravity of the Sun                    
-       → $a = -\frac{GM}{|r|^3}\times\vec{r}$
+       → $$ a = -\frac{GM}{|r|^3}\times\vec{r} $$
    
    * ODE for Position                               
        → $\frac{dr}{dt} = v$ 
