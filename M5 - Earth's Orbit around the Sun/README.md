@@ -33,13 +33,15 @@
 
 # 3) Useage
 1. Change the Simulation Configuration thorough [`config.json`](https://github.com/SpartificialUdemy/PSA/blob/main/M5%20-%20Earth's%20Orbit%20around%20the%20Sun/data/config.json)              
-   **a.** `r_0`: Position vector at the Planet's Perihelion              
-   **b.** `v_0`: Velocity vector at the Planet's Perihelion           
-   **c.** `dt`: Time Steps for the Simulation          
-   **d.** `t_max`: Total time of the Simulation                             
-   **e.** `method`: Numerical Integration Method (either "RK4" or "Euler')             
-   
+**a.** `r_0`: Position vector at the Planet's Perihelion              
+**b.** `v_0`: Velocity vector at the Planet's Perihelion           
+**c.** `dt`: Time Steps for the Simulation          
+**d.** `t_max`: Total time of the Simulation                             
+**e.** `method`: Numerical Integration Method (either "RK4" or "Euler')             
+
 2. Run and Simulate the Orbit of Planet around the Sun
+
+--
 
 # 4) Simulate any planet of your choice
 * Here is the [Planetary Fact Sheet](https://nssdc.gsfc.nasa.gov/planetary/factsheet/
