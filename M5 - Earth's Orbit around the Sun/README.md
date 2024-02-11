@@ -1,10 +1,10 @@
-# 1) <h1 id="ps">Problem Statement</h1>
+# 1) Problem Statement
 
 * Create a simulation to track the orbit of the Earth around the Sun for a period of 1 year.
 * Use Euler and Runge - Kutta method of 4th order (RK4) for this task.
 * Find the distance from Earth to Sun at Apogee using Euler and RK4 method and compare it with the original.
 
-   ## 1.1) <h1.1 id="eqn">Given Equations</h1.1>
+   ## 1.1) Given Equations
 
    * Accn of Earth due to Gravity of the Sun 
        * $a = -\frac{GM}{|r|^3}\times\vec{r}$
@@ -15,17 +15,16 @@
    * ODE for Velocity
       * $\frac{dv}{dt} = a$
    
-   ## 1.2) <h3 id ='perihelion'>Initial Condition</h3>
+   ## 1.2) Initial Condition
    * Earth is at its Perihelion (closest to Sun)
    
-   ## 1.3) <h4 id='earth_output'>Simulated Output</h4>
-   * Take a look at the output of the Earth's Orbit:-
+   ## 1.3) Simulated Output
 <img src="earth_orbit.png" alt="Orbit of the Earth" width=50%>
 
 
 ---
 
-# 2) <h5 id='setup'>Setup:- Simulate any Planet's Orbit in our Solar System</h5>
+# 2) Setup:- Simulate any Planet's Orbit in our Solar System
 1. Clone the Repository:- `https://github.com/SpartificialUdemy/PSA.git`
 2. Change into the project directory:- cd "M5 - Earth's Orbit around the Sun"
 4. Install `requirements.txt`:- pip install -r requirements.txt
@@ -35,7 +34,7 @@
 
 ---
 
-# <h6 id='useage'>3) Understanding `config.json` for Simulation Parameters</h6>
+# <h1 id='useage'>3) Understanding `config.json` for Simulation Parameters</h1>
 Change the Simulation Parameters using [config.json](https://github.com/SpartificialUdemy/PSA/blob/main/M5%20-%20Earth's%20Orbit%20around%20the%20Sun/config.json):- 
 
    **a)** Planet Info:                                              
@@ -56,6 +55,6 @@ Change the Simulation Parameters using [config.json](https://github.com/Spartifi
 
 ---
 
-# 4) <h7 id='sheet'>Simulate any planet of your choice</h7>
+# 4) Simulate any planet of your choice
 * Here is the [Planetary Fact Sheet](https://nssdc.gsfc.nasa.gov/planetary/factsheet/
 ) that you can refer.
