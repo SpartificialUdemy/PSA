@@ -14,7 +14,7 @@
 * Use Euler and Runge - Kutta method of 4th order (RK4) for this task.
 * Find the distance from Earth to Sun at Apogee using Euler and RK4 method and compare it with the original.
 
-   ## 1.1) <h2 id="eqn">Given Equations</h2>
+   ## 1.1) <h1.1 id="eqn">Given Equations</h1.1>
 
    * Accn of Earth due to Gravity of the Sun 
        * $a = -\frac{GM}{|r|^3}\times\vec{r}$
