@@ -26,14 +26,15 @@ def setup_simulation(config):
     return planet_name, color_at_perihelion, color_at_aphelion, r, v, t, time_step, method_integration
 
 # Read config.json
-config = read_json_config("data/config.json")
+config = read_json_config("config.json")
 
 # Constants
 G = 6.6743e-11    
 M_SUN = 1.989e30  # kg
 
 # Setup simulation
-planet_name, color_at_perihelion, color_at_aphelion, r, v, t, time_step, method_integration = setup_simulation(config)
+planet_name, color_at_perihelion, color_at_aphelion, \
+      r, v, t, time_step, method_integration = setup_simulation(config)
 
 # Call numerical integration
 numerical_integration(G, M_SUN, r, v, accn, time_step, method=method_integration)
