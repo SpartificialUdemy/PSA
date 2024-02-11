@@ -223,9 +223,9 @@ def plot_simulated_data(r, method_integration, arg_aphelion,
     # Plot the Orbit, Sun, Earth at Perihelion and Aphelion
     plt.plot(r[:, 0], r[:, 1], color='tab:pink', lw=2, label='Orbit')
     plt.scatter(0, 0, color='yellow', s=1000, label='Sun')
-    plt.scatter(r[0,0], r[0,1], s=200, label='Earth at its Perihelion', color=color_peri)
+    plt.scatter(r[0,0], r[0,1], s=200, label=f'{name_planet} at its Perihelion', color=color_peri)
     plt.scatter(r[arg_aphelion,0], r[arg_aphelion,1], s=200,
-                label='Earth at its Aphelion', color=color_ap)
+                label=f'{name_planet} at its Aphelion', color=color_ap)
 
     # Add Legend and Customize it
     legend = plt.legend(loc='lower right', frameon=False)
