@@ -37,8 +37,8 @@
 # <h1 id='useage'>3) Understanding `config.json` for Simulation Parameters</h1>
 Change the Simulation Parameters using <a href="https://github.com/SpartificialUdemy/PSA/blob/main/M5%20-%20Earth's%20Orbit%20around%20the%20Sun/config.json" target="_blank">config.json</a>:-              
    **a)** Planet Info:                                              
-      * `name`: The name of the Planet to Display on the Plot.                      
-      * `perihelion_color`: The color to give to the Planet at its Perihelion.                   
+      \rarr `name`: The name of the Planet to Display on the Plot.                      
+      \rarr `perihelion_color`: The color to give to the Planet at its Perihelion.                   
       * `aphelion_color`: The color to give to the Planet at its Aphelion.                  
                                  
    **b)** Initial Conditions:                                                                             
