@@ -36,21 +36,21 @@
 
 # <h1 id='useage'>3) Understanding `config.json` for Simulation Parameters</h1>
 Change the Simulation Parameters using <a href="https://github.com/SpartificialUdemy/PSA/blob/main/M5%20-%20Earth's%20Orbit%20around%20the%20Sun/config.json" target="_blank">config.json</a>:-              
-   **a)** Planet Info:
-      * `name`: The name of the Planet to Display on the Plot.
-      * `perihelion_color`: The color to give to the Planet at its Perihelion.         
-      * `aphelion_color`: The color to give to the Planet at its Aphelion.  
-
-   **b)** Initial Conditions:
-      * `position_at_perihelion`: The closest distance between the Sun and the Planet `(in million km)`.
-      * `velocity_at_perihelion`: The value of speed at the Planet's Perihelion `(in km/s)`.
-
-   **c)** Time Settings:
-      * `time_step`: The steps in the Simulation for updating position and velocity `(in seconds)`.
-      * `simulation_time`: The maximum time of the simulation `(in days \rarr 1 day = 24 hours)`.
-
-   **d)** Numerical Integration:
-      * `method`: The method to choose for Numerical Integration `(either "RK4" or "Euler")`.
+   **a)** Planet Info:                                              
+      * `name`: The name of the Planet to Display on the Plot.                      
+      * `perihelion_color`: The color to give to the Planet at its Perihelion.                   
+      * `aphelion_color`: The color to give to the Planet at its Aphelion.                  
+                                 
+   **b)** Initial Conditions:                                                                             
+      * `position_at_perihelion`: The closest distance between the Sun and the Planet `(in million km)`.                                                                                       
+      * `velocity_at_perihelion`: The value of speed at the Planet's Perihelion `(in km/s)`.                 
+                          
+   **c)** Time Settings:                                                                             
+      * `time_step`: The steps in the Simulation for updating position and velocity `(in seconds)`.      
+      * `simulation_time`: The maximum time of the simulation `(in days \rarr 1 day = 24 hours)`.      
+                               
+   **d)** Numerical Integration:                                                              
+      * `method`: The method to choose for Numerical Integration `(either "RK4" or "Euler")`.      
 
 ---
 
