@@ -7,7 +7,7 @@
    ## 1.1) Given Equations
 
    * Accn of Earth due to Gravity of the Sun                    
-       → [ikmg](https://www.sciweavers.org/upload/Tex2Img_1707682789/render.png)
+       → ![accn](https://www.sciweavers.org/upload/Tex2Img_1707682789/render.png)
    
    * ODE for Position                               
        → $\frac{dr}{dt} = v$ 
