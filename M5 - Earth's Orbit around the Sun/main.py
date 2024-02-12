@@ -26,7 +26,7 @@ def setup_simulation(config):
     return planet_name, color_at_perihelion, color_at_aphelion, r, v, t, time_step, method_integration
  
 # Read config.json
-config = read_json_config("local_config.json")
+config = read_json_config("config.json")
 
 # Constants
 G = 6.6743e-11    
