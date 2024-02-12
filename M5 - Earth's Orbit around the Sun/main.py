@@ -24,7 +24,7 @@ def setup_simulation(config):
     r[0], v[0] = np.array([initial_position, 0]), np.array([0, -initial_velocity])
 
     return planet_name, color_at_perihelion, color_at_aphelion, r, v, t, time_step, method_integration
-
+ 
 # Read config.json
 config = read_json_config("config.json")
 
@@ -37,7 +37,7 @@ planet_name, color_at_perihelion, color_at_aphelion, \
       r, v, t, time_step, method_integration = setup_simulation(config)
 
 # Call numerical integration
-numerical_integration(G, M_SUN, r, v, accn, time_step, method=method_integration)
+numerical_integration(G, M_SUN, r, v, accn, time_step, method=method_integration,)
 
 # Get data of Earth at its Aphelion
 arg_aphelion, vel_aphelion, pos_aphelion = at_aphelion(r, v)
