@@ -1,0 +1,18 @@
+{
+  "planet_info": {
+    "name" : "Earth",
+    "perihelion_color" : "cyan",
+    "aphelion_color" : "blue"
+  },
+  "initial_conditions": {
+    "position_at_perihelion": 147.1,
+    "velocity_at_perihelion": 30.29
+  },
+  "time_settings": {
+    "time_step": 360,
+    "simulation_time": 365
+  },
+  "numerical_integration": {
+    "method": "RK4"
+  }
+}
