@@ -2,6 +2,17 @@ from random import randint
 import pygame as pg
 
 def generate_stars(num_stars, width, height):
+    """
+    Generate a list of stars with random positions and colors.
+
+    Parameters:
+    - num_stars (int): Number of stars to generate.
+    - width (int): Width of the Pygame window.
+    - height (int): Height of the Pygame window.
+
+    Returns:
+    list: List of star dictionaries, each containing color, center coordinates, and radius.
+    """
     stars_list = [
         {
             'color': (randint(190, 255), randint(190, 255), randint(190, 255)),
@@ -15,14 +26,14 @@ def generate_stars(num_stars, width, height):
 # Draw stars on the pygame window
 def draw_stars(WINDOW, stars_list):
     """
-    Draw stars on the simulator window.
+    Draw stars on the Pygame window.
 
-    Args:
-        stars_list (List[Dict[str, Union[Tuple[int, int, int], Tuple[int, int], int]]]): List of dictionaries representing stars.
-            Each dictionary must contain 'color' (RGB tuple), 'center' (center coordinates tuple), and 'radius' (integer).
+    Parameters:
+    - WINDOW (pygame.Surface): Pygame window surface.
+    - stars_list (list): List of star dictionaries, each containing color, center coordinates, and radius.
 
     Returns:
-        None
+    None
     """
     for star in stars_list:
         pg.draw.circle(WINDOW, star['color'], star['center'], star['radius'])
