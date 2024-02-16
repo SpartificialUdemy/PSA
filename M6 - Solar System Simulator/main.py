@@ -11,7 +11,7 @@ import pygame as pg
 from simulation import simulation_parameters, simulator
 from stars import generate_stars
 from parameters import SIMULATION_FPS, TRACK_ORBIT
-from create_bodies import ss_bodies
+from create_bodies import solar_system_bodies
 from colors import *
 
 """Solar System Simulator using PyGame"""
