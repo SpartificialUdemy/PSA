@@ -1,4 +1,4 @@
-from simulation import add_solar_system_body, ss_bodies
+from simulation import add_solar_system_body, solar_system_bodies
 from colors import *
 
 # Use this guide to add the bodies to the simulator
