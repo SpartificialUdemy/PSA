@@ -25,7 +25,7 @@ RED = (188, 39, 50)
 class SolarSystemBodies:
 
     AU = 1.496e11
-    SCALE = 285/AU
+    SCALE = 270/AU
     G = 6.6743e-11
     TIME_STEP = 24*3600
 
@@ -54,7 +54,7 @@ class SolarSystemBodies:
         y_diff = ss_body.y - self.y
         distance = math.sqrt(x_diff**2 + y_diff**2)
         g_force = self.G * self.mass * ss_body.mass / distance**2
-        theta = math.atan2(y_diff/x_diff)
+        theta = math.atan2(y_diff, x_diff)
         f_x = g_force * math.cos(theta)
         f_y = g_force * math.sin(theta)
         return f_x, f_y
@@ -93,12 +93,21 @@ run=True
 
 sun = SolarSystemBodies("Sun", YELLOW, 0, 0, 1.989e30, 30)
 mercury = SolarSystemBodies("Mercury", GRAY, 0.39*SolarSystemBodies.AU, 0, 0.33e24, 6)
+mercury.y_vel = -47.4e3
 venus = SolarSystemBodies("Venus", YELLOWISH_WHITE, 0.72*SolarSystemBodies.AU, 0, 4.87e24, 14)
+venus.y_vel = -35e3
 earth = SolarSystemBodies("Earth", BLUE, 1*SolarSystemBodies.AU, 0, 5.97e24, 15)
+earth.y_vel = -29.8e3
 mars = SolarSystemBodies("Mars", RED, 1.52*SolarSystemBodies.AU, 0, 0.642e24, 8)
+mars.y_vel = -24.1e3
+
+# Set the FPS for the simulation
+FPS = 60
+clock = pg.time.Clock()
 
 while run:
 
+    clock.tick(FPS)
     WINDOW.fill(BLACK)
     draw_stars(stars_list)
     
@@ -107,6 +116,7 @@ while run:
             run=False
     ss_bodies = [sun, mercury, venus, earth, mars]
     for body in ss_bodies:
+        body.update_position(ss_bodies)
         body.draw_body(WINDOW)
     pg.display.update()
 
