@@ -3,15 +3,42 @@ from parameters import SIMULATION_SCALE
 import pygame as pg
 import math
 
+# Class Info
+"""
+Represents a celestial body in our solar system.
+
+Class Attributes:
+- AU (float): Astronomical Unit, average distance from the Sun to Earth.
+- SCALE (float): Simulation scale factor.
+- G (float): Gravitational constant.
+- TIME_STEP (float): Time step for simulation updates.
+
+Attributes:
+- name (str): Name of the celestial body.
+- color (tuple): RGB tuple representing the color of the celestial body.
+- x (float): Current x-coordinate of the celestial body.
+- y (float): Current y-coordinate of the celestial body.
+- mass (float): Mass of the celestial body.
+- simulator_radius (float): Radius of the celestial body in the simulator.
+- sun (bool): Indicates whether the celestial body is the Sun (default is False).
+- distance_to_sun (float): Distance to the Sun (used for tracking orbit).
+- x_vel (float): Current x-component of velocity.
+- y_vel (float): Current y-component of velocity.
+- orbit (list): List of positions representing the orbit path.
+
+Methods:
+- __init__: Initializes a celestial body with specified parameters.
+- _draw_body: Draws the celestial body on the Pygame window.
+- _track_orbit: Draws the orbit path of the celestial body.
+- draw: Combines _draw_body and _track_orbit for display.
+- _gravitational_force: Calculates gravitational force between two celestial bodies.
+- update_position: Updates the position of the celestial body based on gravitational forces.
+
+"""
+
 # Celestial Body in our Solar System
 class SolarSystemBodies:
-    """
-    Class Constants:
-        - AU (float): Astronomical Unit, representing the average distance from the Earth to the Sun in meters.
-        - SCALE (float): Scaling factor to convert astronomical units to pixels for simulation display.
-        - G (float): Gravitational constant in m^3 kg^-1 s^-2.
-        - TIME_STEP (float): Time step for simulation in seconds.
-    """
+
     AU = 1.496e11
     SCALE = SIMULATION_SCALE/AU
     G = 6.6743e-11
@@ -19,20 +46,20 @@ class SolarSystemBodies:
 
     def __init__(self, name, color, x, y, mass, simulator_radius, y_vel, sun=False):
         """
-        Represents a celestial body in the solar system.
+        Initialize a celestial body with specified parameters.
 
-        Attributes:
-            name (str): The name of the body.
-            color (tuple): RGB color tuple.
-            x (float): Initial X-coordinate.
-            y (float): Initial Y-coordinate.
-            mass (float): Mass of the body.
-            radius (float): Radius of the Simulator body.
-            sun (bool): True if the body is the sun.
-            distance_to_sun (float): Distance to the sun (initialized to 0).
-            x_vel (float): Initial horizontal velocity (initialized to 0).
-            y_vel (float): Initial vertical velocity.
-            orbit (list): List to store orbit coordinates.
+        Parameters:
+        - name (str): Name of the celestial body.
+        - color (tuple): RGB tuple representing the color of the celestial body.
+        - x (float): Initial x-coordinate of the celestial body.
+        - y (float): Initial y-coordinate of the celestial body.
+        - mass (float): Mass of the celestial body.
+        - simulator_radius (float): Radius of the celestial body in the simulator.
+        - y_vel (float): Initial vertical velocity of the celestial body.
+        - sun (bool): Whether the celestial body is the Sun (default is False).
+
+        Returns:
+        None
         """
         self.name = name
         self.color = color
@@ -50,15 +77,18 @@ class SolarSystemBodies:
 
     def _draw_body(self, WINDOW, WIDTH, HEIGHT, NAME_TEXT, DIST_TEXT):
         """
-        Draw the celestial body on the simulator window.
+        Draws the celestial body on the Pygame window.
 
-        Args:
-            WINDOW (pygame.Surface): The Pygame surface representing the simulator window.
+        Parameters:
+        - WINDOW (pygame.Surface): Pygame window surface.
+        - WIDTH (int): Width of the Pygame window.
+        - HEIGHT (int): Height of the Pygame window.
+        - NAME_TEXT (pygame.font.Font): Font for displaying celestial body names.
+        - DIST_TEXT (pygame.font.Font): Font for displaying distance information.
 
         Returns:
-            None
+        None
         """
-
         x = self.x*self.SCALE + WIDTH//2
         y = self.y*self.SCALE + HEIGHT//2
         pg.draw.circle(surface=WINDOW, color=self.color, center=(x, y), radius=self.simulator_radius)
@@ -76,13 +106,15 @@ class SolarSystemBodies:
 
     def _track_orbit(self, WINDOW, WIDTH, HEIGHT):
         """
-        Track and draw the orbit of the celestial body on the simulator window.
+        Draws the orbit path of the celestial body on the Pygame window.
 
-        Args:
-            WINDOW (pygame.Surface): The Pygame surface representing the simulator window.
+        Parameters:
+        - WINDOW (pygame.Surface): Pygame window surface.
+        - WIDTH (int): Width of the Pygame window.
+        - HEIGHT (int): Height of the Pygame window.
 
         Returns:
-            None
+        None
         """
         if len(self.orbit) > 1:
             centered_points = []
@@ -94,54 +126,58 @@ class SolarSystemBodies:
 
     def draw(self, WINDOW, WIDTH, HEIGHT, NAME_TEXT, DIST_TEXT, track=True):
         """
-        Draw the celestial body and its orbit on the simulator window.
+        Combines _draw_body and _track_orbit for display.
 
-        Args:
-            WINDOW (pygame.Surface): The Pygame surface representing the simulator window.
-            track (bool, optional): If True, the orbit of the celestial body will be drawn. Default is True.
+        Parameters:
+        - WINDOW (pygame.Surface): Pygame window surface.
+        - WIDTH (int): Width of the Pygame window.
+        - HEIGHT (int): Height of the Pygame window.
+        - NAME_TEXT (pygame.font.Font): Font for displaying celestial body names.
+        - DIST_TEXT (pygame.font.Font): Font for displaying distance information.
+        - track (bool): Whether to track the orbits of celestial bodies (default is True).
 
         Returns:
-            None
+        None
         """
         self._draw_body(WINDOW, WIDTH, HEIGHT, NAME_TEXT, DIST_TEXT)
         if track:
             self._track_orbit(WINDOW, WIDTH, HEIGHT)
 
-    def _gravitational_force(self, ss_body):
+    def _gravitational_force(self, solar_system_body):
         """
-        Calculate the gravitational force between this celestial body and another.
+        Calculates gravitational force between two celestial bodies.
 
-        Args:
-            ss_body (SolarSystemBodies): Another celestial body for which gravitational force is calculated.
+        Parameters:
+        - solar_system_body (SolarSystemBodies): Other celestial body.
 
         Returns:
-            Tuple[float, float]: The components of the gravitational force in the x and y directions.
+        Tuple (float, float): Components of gravitational force.
         """
-        x_diff = ss_body.x - self.x
-        y_diff = ss_body.y - self.y
+        x_diff = solar_system_body.x - self.x
+        y_diff = solar_system_body.y - self.y
         distance = math.sqrt(x_diff**2 + y_diff**2)
-        if ss_body.sun:
+        if solar_system_body.sun:
             self.distance_to_sun = distance
-        g_force = self.G * self.mass * ss_body.mass / distance**2
+        g_force = self.G * self.mass * solar_system_body.mass / distance**2
         theta = math.atan2(y_diff, x_diff)
         f_x = g_force * math.cos(theta)
         f_y = g_force * math.sin(theta)
         return f_x, f_y
 
-    def update_position(self, ss_bodies):
+    def update_position(self, solar_system_bodies):
         """
-        Update the position of the celestial body based on gravitational interactions.
+        Updates the position of the celestial body based on gravitational forces.
 
-        Args:
-            ss_bodies (List[SolarSystemBodies]): List of other celestial bodies in the solar system.
+        Parameters:
+        - solar_system_bodies (list): List of SolarSystemBodies objects representing the solar system bodies.
 
         Returns:
-            None
+        None
         """
         net_fx, net_fy = 0, 0
-        for ss_body in ss_bodies:
-            if self != ss_body:
-                f_x, f_y = self._gravitational_force(ss_body)
+        for body in solar_system_bodies:
+            if self != body:
+                f_x, f_y = self._gravitational_force(body)
                 net_fx += f_x
                 net_fy += f_y
         self.x_vel += net_fx / self.mass * self.TIME_STEP
