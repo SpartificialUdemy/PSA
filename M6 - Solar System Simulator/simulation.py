@@ -1,5 +1,5 @@
 import pygame as pg
-from solarsystem import SolarSystemBodies
+from solar_system import SolarSystemBodies
 from stars import draw_stars
 from colors import BLACK_COLOR
 
