@@ -1,4 +1,4 @@
-# Solar System Simulator using Pygame ☀️
+# 🌍 Solar System Simulator using Pygame ☀️
 
 * Welcome to the Solar System Simulator project! 
 * Explore the wonders of our solar system right from your computer! 
