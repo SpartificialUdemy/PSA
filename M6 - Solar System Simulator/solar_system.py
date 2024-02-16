@@ -33,7 +33,7 @@ DIST_TEXT = pg.font.SysFont(name='Sans', size=18, bold=True)
 class SolarSystemBodies:
 
     AU = 1.496e11
-    SCALE = 270/AU
+    SCALE = 250/AU
     G = 6.6743e-11
     TIME_STEP = 24*3600
 
@@ -55,8 +55,8 @@ class SolarSystemBodies:
 
     # Method 1 - Draw the bodies on the Simulator
     def draw_body(self, WINDOW):
-        x = self.x*SolarSystemBodies.SCALE + WIDTH//2
-        y = self.y*SolarSystemBodies.SCALE + HEIGHT//2
+        x = self.x*self.SCALE + WIDTH//2
+        y = self.y*self.SCALE + HEIGHT//2
         pg.draw.circle(surface=WINDOW, color=self.color, center=(x, y), radius=self.radius)
 
         if not self.sun:
@@ -69,6 +69,22 @@ class SolarSystemBodies:
             WINDOW.blit(name_text, (x-40, y-78))
             dist_text = DIST_TEXT.render(f"{round(self.x/3e8, 3), round(self.y/3e8, 3)} lt-sec", True, DIST_TEXT_COLOR)
             WINDOW.blit(dist_text, (x-40, y-55))
+
+    # Method 4 - Track the Orbit
+    def track_orbit(self, WINDOW):
+        if len(self.orbit) > 1:
+            centered_points = []
+            for (x, y) in self.orbit:
+                x = x*self.SCALE + WIDTH//2
+                y = y*self.SCALE + HEIGHT//2
+                centered_points.append((x, y))
+            pg.draw.lines(surface=WINDOW, color=self.color, closed=False, points=centered_points, width=2)
+
+    # Method 5 - draw
+    def draw(self, WINDOW, track=True):
+        self.draw_body(WINDOW)
+        if track:
+            self.track_orbit(WINDOW)
 
 
     # Method 2 - Calculate the Gravitational Force
@@ -148,7 +164,7 @@ while run:
         ss_bodies = [sun, mercury, venus, earth, mars]
         for body in ss_bodies:
             body.update_position(ss_bodies)
-            body.draw_body(WINDOW)
+            body.draw(WINDOW, track=False)
         pg.display.update()
 
 
