@@ -1,6 +1,17 @@
 from simulation import add_solar_system_body, ss_bodies
 from colors import *
 
+# Use this guide to add the bodies to the simulator
+'''
+name - Name of the Solar System Body 
+color - Color of the Solar System Body
+x - Initial x-Position of Body in Astronomical Units (AU)
+y - Initial y-Position of Body (default all set to 0)
+mass - Mass of the Solar System Body in Kg
+y_vel - Initial velocity of the Body in m/s (-ve sign for counter-clockwise motion)
+sun - Set this to 'True' for the body at the center of the Simulator
+'''
+
 # Create Solar System Bodies for the Simulator
 add_solar_system_body(
     name = "Sun", 
