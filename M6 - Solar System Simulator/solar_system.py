@@ -90,6 +90,7 @@ def draw_stars(stars_list):
 
 # Create Simulation
 run=True
+paused = False
 
 sun = SolarSystemBodies("Sun", YELLOW, 0, 0, 1.989e30, 30)
 mercury = SolarSystemBodies("Mercury", GRAY, 0.39*SolarSystemBodies.AU, 0, 0.33e24, 6)
@@ -112,13 +113,17 @@ while run:
     draw_stars(stars_list)
     
     for event in pg.event.get():
-        if event.type == pg.KEYDOWN and event.key == pg.K_ESCAPE:
-            run=False
-    ss_bodies = [sun, mercury, venus, earth, mars]
-    for body in ss_bodies:
-        body.update_position(ss_bodies)
-        body.draw_body(WINDOW)
-    pg.display.update()
+        if event.type == pg.KEYDOWN:
+            if event.key == pg.K_ESCAPE:
+                run=False
+            elif event.key == pg.K_SPACE:
+                paused = not paused
+    if not paused:
+        ss_bodies = [sun, mercury, venus, earth, mars]
+        for body in ss_bodies:
+            body.update_position(ss_bodies)
+            body.draw_body(WINDOW)
+        pg.display.update()
 
 
 # Quit the Pygame
