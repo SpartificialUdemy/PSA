@@ -11,6 +11,8 @@ import pygame as pg
 from simulation import get_screen_size, create_pygame_window, set_simulation_fonts, simulator
 from stars import generate_stars
 from parameters import SIMULATION_FPS, TRACK_ORBIT
+from parameters import BODY_FONT_NAME, DISTANCE_FONT_NAME, PAUSE_FONT_NAME
+from parameters import BODY_FONT_SIZE, DISTANCE_FONT_SIZE, PAUSE_FONT_SIZE
 from create_bodies import solar_system_bodies
 from colors import *
 
@@ -19,12 +21,16 @@ from colors import *
 # Initialize Pygame
 pg.init()
 
-# Simulation Setup
+# Pygame Window Setup
 WIDTH, HEIGHT = get_screen_size()
 WINDOW = create_pygame_window(WIDTH, HEIGHT)
-NAME_FONT, DISTANCE_FONT, PAUSE_FONT = set_simulation_fonts(body_font_name='TimesRoman', body_font_size=18,
-                                                            distance_font_name='Sans', distance_font_size=18,
-                                                            pause_font_name='TimesRoman', pause_font_size=45)
+
+# Font Setup
+NAME_FONT, DISTANCE_FONT, PAUSE_FONT = set_simulation_fonts(
+    body_font_name=BODY_FONT_NAME, body_font_size=BODY_FONT_SIZE,
+    distance_font_name=DISTANCE_FONT_NAME, distance_font_size=DISTANCE_FONT_SIZE,
+    pause_font_name=PAUSE_FONT_NAME, pause_font_size=PAUSE_FONT_SIZE
+)
 
 # Generate the Background Stars for Simulation
 stars_list = generate_stars(num_stars = 450, width = WIDTH, height = HEIGHT)
