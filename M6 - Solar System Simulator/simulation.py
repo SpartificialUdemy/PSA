@@ -3,31 +3,47 @@ from solar_system import SolarSystemBodies
 from stars import draw_stars
 from colors import BLACK_COLOR, WHITE_COLOR
 
-def simulation_parameters():
+def get_screen_size():
     """
-    Initialize parameters for the Solar System Simulator.
+    Get screen size for the Solar System Simulator.
 
     Returns:
     - WIDTH (int): Width of the Pygame window.
     - HEIGHT (int): Height of the Pygame window.
-    - WINDOW (pygame.Surface): Pygame window surface.
-    - NAME_TEXT (pygame.font.Font): Font for displaying celestial body names.
-    - DIST_TEXT (pygame.font.Font): Font for displaying distance information.
     """
-    # Get screen information
     screen_info = pg.display.Info()
     WIDTH = screen_info.current_w
     HEIGHT = screen_info.current_h
+    return WIDTH, HEIGHT
 
-    # Create Pygame window
-    WINDOW = pg.display.set_mode((WIDTH, HEIGHT))
+def create_pygame_window(width, height):
+    """
+    Create Pygame window for the Solar System Simulator.
+
+    Parameters:
+    - width (int): Width of the Pygame window.
+    - height (int): Height of the Pygame window.
+
+    Returns:
+    - WINDOW (pygame.Surface): Pygame window surface.
+    """
+    WINDOW = pg.display.set_mode((width, height))
     pg.display.set_caption('Solar System Simulator')
+    return WINDOW
 
-    # Fonts to Display on Simulator
-    NAME_TEXT = pg.font.SysFont(name='TimesRoman', size=18, bold=True)
-    DIST_TEXT = pg.font.SysFont(name='Sans', size=18, bold=True)
+def set_simulation_fonts():
+    """
+    Set fonts for the Solar System Simulator.
 
-    return WIDTH, HEIGHT, WINDOW, NAME_TEXT, DIST_TEXT
+    Returns:
+    - NAME_FONT (pygame.font.Font): Font for displaying celestial body names.
+    - DIST_FONT (pygame.font.Font): Font for displaying distance information.
+    - PAUSE_FONT (pygame.font.Font): Font for displaying the pause text on simulator.
+    """
+    NAME_FONT = pg.font.SysFont(name='TimesRoman', size=18, bold=True)
+    DISTANCE_FONT = pg.font.SysFont(name='Sans', size=18, bold=True)
+    PAUSE_FONT = pg.font.SysFont(name='TimesRoman', size=50, bold=True)  
+    return NAME_FONT, DISTANCE_FONT, PAUSE_FONT
 
 solar_system_bodies = []  # List to store all the solar system bodies
 def add_solar_system_body(name, color, x, y, mass, radius, y_vel, sun=False):
@@ -51,7 +67,7 @@ def add_solar_system_body(name, color, x, y, mass, radius, y_vel, sun=False):
     solar_system_bodies.append(body)
     return solar_system_bodies
 
-def simulate_bodies(window, width, height, name_text, dist_text, solar_system_bodies, track_orbit=True):
+def simulate_bodies(window, width, height, name_font, dist_font, pause_font, solar_system_bodies, track_orbit=True):
     """
     Simulate the movement and draw the celestial bodies in the solar system.
 
@@ -59,8 +75,9 @@ def simulate_bodies(window, width, height, name_text, dist_text, solar_system_bo
     - window (pygame.Surface): Pygame window surface.
     - width (int): Width of the Pygame window.
     - height (int): Height of the Pygame window.
-    - name_text (pygame.font.Font): Font for displaying celestial body names.
-    - dist_text (pygame.font.Font): Font for displaying distance information.
+    - name_font (pygame.font.Font): Font for displaying celestial body names.
+    - dist_font (pygame.font.Font): Font for displaying distance information.
+    - pause_font (pygame.font.Font): Font for displaying the pause text.
     - solar_system_bodies (list): List of SolarSystemBodies objects representing the solar system bodies.
     - track_orbit (bool): Whether to track the orbits of celestial bodies (default is True).
 
@@ -69,10 +86,10 @@ def simulate_bodies(window, width, height, name_text, dist_text, solar_system_bo
     """
     for body in solar_system_bodies:
         body.update_position(solar_system_bodies)
-        body.draw(window, width, height, name_text, dist_text, track=track_orbit)
+        body.draw(window, width, height, name_font, dist_font, pause_font, track=track_orbit)
 
 
-def draw_pause_text(window, width, height):
+def draw_pause_text(window, width, height, pause_font):
     """
     Draw the pause text onto the window.
 
@@ -83,9 +100,8 @@ def draw_pause_text(window, width, height):
 
     Returns:
     None
-    """
-    PAUSE_FONT = pg.font.SysFont(name='TimesRoman', size=50, bold=True)    
-    pause_text = PAUSE_FONT.render('|| Pause',True, WHITE_COLOR)
+    """ 
+    pause_text = pause_font.render('|| Pause',True, WHITE_COLOR)
     text_x = width - pause_text.get_width() - 15  # Adjusted for some padding
     text_y = height - pause_text.get_height() - 15 
     window.blit(pause_text, (text_x, 0))
@@ -109,7 +125,7 @@ def handle_events(event, run, paused):
             paused = not paused
     return run, paused
 
-def simulate_and_update(window, width, height, name_text, dist_text, solar_system_bodies, track, static_surface):
+def simulate_and_update(window, width, height, name_font, dist_font, pause_font, solar_system_bodies, track, static_surface):
     """
     Simulate the movement and update the window.
 
@@ -117,8 +133,9 @@ def simulate_and_update(window, width, height, name_text, dist_text, solar_syste
     - window (pygame.Surface): Pygame window surface.
     - width (int): Width of the Pygame window.
     - height (int): Height of the Pygame window.
-    - name_text (pygame.font.Font): Font for displaying celestial body names.
-    - dist_text (pygame.font.Font): Font for displaying distance information.
+    - name_font (pygame.font.Font): Font for displaying celestial body names.
+    - dist_font (pygame.font.Font): Font for displaying distance information.
+    - pause_font (pygame.font.Font): Font for displaying pause text.
     - solar_system_bodies (list): List of SolarSystemBodies objects representing the solar system bodies.
     - track (bool): Whether to track the orbits of celestial bodies (default is True).
     - static_surface (pygame.Surface): Surface to hold the static state.
@@ -126,11 +143,11 @@ def simulate_and_update(window, width, height, name_text, dist_text, solar_syste
     Returns:
     None
     """
-    simulate_bodies(window, width, height, name_text, dist_text, solar_system_bodies, track)
+    simulate_bodies(window, width, height, name_font, dist_font, pause_font, solar_system_bodies, track)
     static_surface.blit(window, (0, 0))
     pg.display.update()
 
-def display_paused_state(window, static_surface, width, height):
+def display_paused_state(window, static_surface, width, height, pause_font):
     """
     Display the paused state.
 
@@ -144,10 +161,10 @@ def display_paused_state(window, static_surface, width, height):
     None
     """
     window.blit(static_surface, (0, 0))
-    draw_pause_text(window, width, height)
+    draw_pause_text(window, width, height, pause_font)
     pg.display.update()
 
-def simulator(simulation_fps, window, width, height, name_text, dist_text, stars_list, track):
+def simulator(simulation_fps, window, width, height, name_font, dist_font, pause_font, stars_list, track):
     """
     Run the solar system simulation.
 
@@ -156,8 +173,9 @@ def simulator(simulation_fps, window, width, height, name_text, dist_text, stars
     - window (pygame.Surface): Pygame window surface.
     - width (int): Width of the Pygame window.
     - height (int): Height of the Pygame window.
-    - name_text (pygame.font.Font): Font for displaying celestial body names.
-    - dist_text (pygame.font.Font): Font for displaying distance information.
+    - name_font (pygame.font.Font): Font for displaying celestial body names.
+    - dist_font (pygame.font.Font): Font for displaying distance information.
+    - pause_font (pygame.font.Font): Font for displaying pause text on simulator.
     - stars_list (list): List of star coordinates for the background.
     - track (bool): Whether to track the orbits of celestial bodies.
 
@@ -180,9 +198,9 @@ def simulator(simulation_fps, window, width, height, name_text, dist_text, stars
             run, paused = handle_events(event, run, paused)
 
         if not paused:
-            simulate_and_update(window, width, height, name_text, dist_text, \
+            simulate_and_update(window, width, height, name_font, dist_font, pause_font, \
                                 solar_system_bodies, track, static_surface)
         else:
-            display_paused_state(window, static_surface, width, height)
+            display_paused_state(window, static_surface, width, height, pause_font)
 
         pg.display.update()
