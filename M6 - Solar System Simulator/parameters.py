@@ -1,4 +1,9 @@
-# Set up the Parameters for Simulation
+# Setup the Parameters for Simulation
 SIMULATION_SCALE = 250
 SIMULATION_FPS = 60
 TRACK_ORBIT = False
+
+# Setup Fonts
+BODY_FONT_NAME, BODY_FONT_SIZE = 'TimesRoman', 18
+DISTANCE_FONT_NAME, DISTANCE_FONT_SIZE = 'Sans', 18
+PAUSE_FONT_NAME, PAUSE_FONT_SIZE = 'TimesRoman', 45
