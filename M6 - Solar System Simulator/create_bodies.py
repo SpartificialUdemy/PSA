@@ -44,20 +44,20 @@ add_solar_system_body(
 add_solar_system_body(
     name = "Earth", 
     color = BLUE_COLOR, 
-    x = 1, 
+    x = -1, 
     y = 0, 
     mass = 5.97e24, 
     radius = 15, 
-    y_vel = -29.8e3
+    y_vel = 29.8e3
 )
 add_solar_system_body(
     name = "Mars", 
     color = RED_COLOR, 
-    x = 1.52, 
+    x = -1.52, 
     y = 0, 
     mass = 0.642e24, 
     radius = 8, 
-    y_vel = -24.1e3
+    y_vel = 24.1e3
 )
 
 
