@@ -22,7 +22,9 @@ pg.init()
 # Simulation Setup
 WIDTH, HEIGHT = get_screen_size()
 WINDOW = create_pygame_window(WIDTH, HEIGHT)
-NAME_FONT, DISTANCE_FONT, PAUSE_FONT = set_simulation_fonts()
+NAME_FONT, DISTANCE_FONT, PAUSE_FONT = set_simulation_fonts(body_font_name='TimesRoman', body_font_size=18,
+                                                            distance_font_name='Sans', distance_font_size=18,
+                                                            pause_font_name='TimesRoman', pause_font_size=45)
 
 # Generate the Background Stars for Simulation
 stars_list = generate_stars(num_stars = 450, width = WIDTH, height = HEIGHT)
