@@ -114,7 +114,7 @@ def draw_pause_text(window, width, pause_font, pad_text):
     None
     """ 
     pause_text = pause_font.render('|| Pause',True, WHITE_COLOR)
-    text_x = width - pause_text.get_width() - pad_text - 10  # Extra Padding
+    text_x = width - pause_text.get_width() - pad_text
     text_y = pad_text
     window.blit(pause_text, (text_x, text_y))
 
