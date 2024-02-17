@@ -75,7 +75,7 @@ class SolarSystemBodies:
         self.y_vel = y_vel
         self.orbit = []
 
-    def _draw_body(self, WINDOW, WIDTH, HEIGHT, NAME_TEXT, DIST_TEXT):
+    def _draw_body(self, WINDOW, WIDTH, HEIGHT, NAME_FONT, DIST_FONT):
         """
         Draws the celestial body on the Pygame window.
 
@@ -83,8 +83,8 @@ class SolarSystemBodies:
         - WINDOW (pygame.Surface): Pygame window surface.
         - WIDTH (int): Width of the Pygame window.
         - HEIGHT (int): Height of the Pygame window.
-        - NAME_TEXT (pygame.font.Font): Font for displaying celestial body names.
-        - DIST_TEXT (pygame.font.Font): Font for displaying distance information.
+        - NAME_FONT (pygame.font.Font): Font for displaying celestial body names.
+        - DIST_FONT (pygame.font.Font): Font for displaying distance information.
 
         Returns:
         None
@@ -94,14 +94,14 @@ class SolarSystemBodies:
         pg.draw.circle(surface=WINDOW, color=self.color, center=(x, y), radius=self.simulator_radius)
 
         if not self.sun:
-            name_text = NAME_TEXT.render(self.name, True, NAME_TEXT_COLOR)
+            name_text = NAME_FONT.render(self.name, True, NAME_TEXT_COLOR)
             WINDOW.blit(name_text, (x-40, y-55))
-            dist_text = DIST_TEXT.render(f"{round(self.distance_to_sun/(3e8*60), 3)} lt-min", True, DIST_TEXT_COLOR)
+            dist_text = DIST_FONT.render(f"{round(self.distance_to_sun/(3e8*60), 3)} lt-min", True, DIST_TEXT_COLOR)
             WINDOW.blit(dist_text, (x-40, y-35))
         else:
-            name_text = NAME_TEXT.render(self.name, True, SUN_NAME_COLOR)
+            name_text = NAME_FONT.render(self.name, True, SUN_NAME_COLOR)
             WINDOW.blit(name_text, (x-40, y-78))
-            dist_text = DIST_TEXT.render(f"{round(self.x/3e8, 3), round(self.y/3e8, 3)} lt-sec", True, SUN_TEXT_COLOR)
+            dist_text = DIST_FONT.render(f"{round(self.x/3e8, 3), round(self.y/3e8, 3)} lt-sec", True, SUN_TEXT_COLOR)
             WINDOW.blit(dist_text, (x-40, y-55))
 
     def _track_orbit(self, WINDOW, WIDTH, HEIGHT):
@@ -124,7 +124,7 @@ class SolarSystemBodies:
                 centered_points.append((x, y))
             pg.draw.lines(surface=WINDOW, color=self.color, closed=False, points=centered_points, width=2)
 
-    def draw(self, WINDOW, WIDTH, HEIGHT, NAME_TEXT, DIST_TEXT, track=True):
+    def draw(self, WINDOW, WIDTH, HEIGHT, NAME_FONT, DIST_FONT, PAUSE_FONT, track=True):
         """
         Combines _draw_body and _track_orbit for display.
 
@@ -132,14 +132,15 @@ class SolarSystemBodies:
         - WINDOW (pygame.Surface): Pygame window surface.
         - WIDTH (int): Width of the Pygame window.
         - HEIGHT (int): Height of the Pygame window.
-        - NAME_TEXT (pygame.font.Font): Font for displaying celestial body names.
-        - DIST_TEXT (pygame.font.Font): Font for displaying distance information.
+        - NAME_FONT (pygame.font.Font): Font for displaying celestial body names.
+        - DIST_FONT (pygame.font.Font): Font for displaying distance information.
+        - PAUSE_FONT (pygame.font.Font): Font for displaying the pause text.
         - track (bool): Whether to track the orbits of celestial bodies (default is True).
 
         Returns:
         None
         """
-        self._draw_body(WINDOW, WIDTH, HEIGHT, NAME_TEXT, DIST_TEXT)
+        self._draw_body(WINDOW, WIDTH, HEIGHT, NAME_FONT, DIST_FONT)
         if track:
             self._track_orbit(WINDOW, WIDTH, HEIGHT)
 
