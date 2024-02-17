@@ -1,7 +1,7 @@
 import pygame as pg
 from solar_system import SolarSystemBodies
 from stars import draw_stars
-from colors import BLACK_COLOR
+from colors import BLACK_COLOR, WHITE_COLOR
 
 def simulation_parameters():
     """
@@ -51,7 +51,7 @@ def add_solar_system_body(name, color, x, y, mass, radius, y_vel, sun=False):
     solar_system_bodies.append(body)
     return solar_system_bodies
 
-def _simulate_bodies(window, width, height, name_text, dist_text, solar_system_bodies, track_orbit=True):
+def simulate_bodies(window, width, height, name_text, dist_text, solar_system_bodies, track_orbit=True):
     """
     Simulate the movement and draw the celestial bodies in the solar system.
 
@@ -70,6 +70,81 @@ def _simulate_bodies(window, width, height, name_text, dist_text, solar_system_b
     for body in solar_system_bodies:
         body.update_position(solar_system_bodies)
         body.draw(window, width, height, name_text, dist_text, track=track_orbit)
+
+
+def draw_pause_text(window, width, height):
+    """
+    Draw the pause text onto the window.
+
+    Parameters:
+    - window (pygame.Surface): Pygame window surface.
+    - width (int): Width of the Pygame window.
+    - height (int): Height of the Pygame window.
+
+    Returns:
+    None
+    """
+    PAUSE_FONT = pg.font.SysFont(name='TimesRoman', size=50, bold=True)    
+    pause_text = PAUSE_FONT.render('|| Pause',True, WHITE_COLOR)
+    text_x = width - pause_text.get_width() - 15  # Adjusted for some padding
+    text_y = height - pause_text.get_height() - 15 
+    window.blit(pause_text, (text_x, 0))
+
+def handle_events(event, run, paused):
+    """
+    Handle Pygame events related to the simulation.
+
+    Parameters:
+    - event (pygame.event.Event): Pygame event object.
+    - run (bool): Flag to continue the simulation.
+    - paused (bool): Flag indicating whether the simulation is paused.
+
+    Returns:
+    Tuple[bool, bool]: Updated values of 'run' and 'paused'.
+    """
+    if event.type == pg.KEYDOWN:
+        if event.key == pg.K_ESCAPE:
+            run = False
+        elif event.key == pg.K_SPACE:
+            paused = not paused
+    return run, paused
+
+def simulate_and_update(window, width, height, name_text, dist_text, solar_system_bodies, track, static_surface):
+    """
+    Simulate the movement and update the window.
+
+    Parameters:
+    - window (pygame.Surface): Pygame window surface.
+    - width (int): Width of the Pygame window.
+    - height (int): Height of the Pygame window.
+    - name_text (pygame.font.Font): Font for displaying celestial body names.
+    - dist_text (pygame.font.Font): Font for displaying distance information.
+    - solar_system_bodies (list): List of SolarSystemBodies objects representing the solar system bodies.
+    - track (bool): Whether to track the orbits of celestial bodies (default is True).
+    - static_surface (pygame.Surface): Surface to hold the static state.
+
+    Returns:
+    None
+    """
+    simulate_bodies(window, width, height, name_text, dist_text, solar_system_bodies, track)
+    static_surface.blit(window, (0, 0))
+    pg.display.update()
+
+def display_paused_state(window, static_surface, width, height):
+    """
+    Display the paused state.
+
+    Parameters:
+    - window (pygame.Surface): Pygame window surface.
+    - static_surface (pygame.Surface): Surface containing the static state.
+    - width (int): Width of the Pygame window.
+    - height (int): Height of the Pygame window.
+
+    Returns:
+    None
+    """
+    window.blit(static_surface, (0, 0))
+    draw_pause_text(window, width, height)
     pg.display.update()
 
 def simulator(simulation_fps, window, width, height, name_text, dist_text, stars_list, track):
@@ -89,9 +164,12 @@ def simulator(simulation_fps, window, width, height, name_text, dist_text, stars
     Returns:
     None
     """
+
     run = True
     paused = False
     clock = pg.time.Clock()
+
+    static_surface = pg.Surface((width, height))
 
     while run:
         clock.tick(simulation_fps)
@@ -99,11 +177,12 @@ def simulator(simulation_fps, window, width, height, name_text, dist_text, stars
         draw_stars(window, stars_list)
 
         for event in pg.event.get():
-            if event.type == pg.KEYDOWN:
-                if event.key == pg.K_ESCAPE:
-                    run = False
-                elif event.key == pg.K_SPACE:
-                    paused = not paused
+            run, paused = handle_events(event, run, paused)
 
         if not paused:
-            _simulate_bodies(window, width, height, name_text, dist_text, solar_system_bodies, track)
+            simulate_and_update(window, width, height, name_text, dist_text, \
+                                solar_system_bodies, track, static_surface)
+        else:
+            display_paused_state(window, static_surface, width, height)
+
+        pg.display.update()
