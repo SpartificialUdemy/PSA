@@ -31,19 +31,31 @@ def create_pygame_window(width, height):
     pg.display.set_caption('Solar System Simulator')
     return WINDOW
 
-def set_simulation_fonts():
+def set_simulation_fonts(body_font_name, body_font_size, 
+                         distance_font_name, distance_font_size,  
+                         pause_font_name, pause_font_size):
     """
     Set fonts for the Solar System Simulator.
 
+    Parameters:
+    - body_font_name (str): Name of the font for celestial body names.
+    - body_font_size (int): Size of the font for celestial body names.
+    - distance_font_name (str): Name of the font for distance information.
+    - distance_font_size (int): Size of the font for distance information.
+    - pause_font_name (str): Name of the font for pause text on the simulator.
+    - pause_font_size (int): Size of the font for pause text on the simulator.
+
     Returns:
-    - NAME_FONT (pygame.font.Font): Font for displaying celestial body names.
-    - DIST_FONT (pygame.font.Font): Font for displaying distance information.
-    - PAUSE_FONT (pygame.font.Font): Font for displaying the pause text on simulator.
+    - name_font (pg_font.Font): Font for displaying celestial body names.
+    - distance_font (pg_font.Font): Font for displaying distance information.
+    - pause_font (pg_font.Font): Font for displaying the pause text on the simulator.
     """
-    NAME_FONT = pg.font.SysFont(name='TimesRoman', size=18, bold=True)
-    DISTANCE_FONT = pg.font.SysFont(name='Sans', size=18, bold=True)
-    PAUSE_FONT = pg.font.SysFont(name='TimesRoman', size=50, bold=True)  
-    return NAME_FONT, DISTANCE_FONT, PAUSE_FONT
+    name_font = pg.font.SysFont(name=body_font_name, size=body_font_size, bold=True)
+    distance_font = pg.font.SysFont(name=distance_font_name, size=distance_font_size, bold=True)
+    pause_font = pg.font.SysFont(name=pause_font_name, size=pause_font_size, bold=True)  
+
+    return name_font, distance_font, pause_font
+
 
 solar_system_bodies = []  # List to store all the solar system bodies
 def add_solar_system_body(name, color, x, y, mass, radius, y_vel, sun=False):
@@ -89,22 +101,22 @@ def simulate_bodies(window, width, height, name_font, dist_font, pause_font, sol
         body.draw(window, width, height, name_font, dist_font, pause_font, track=track_orbit)
 
 
-def draw_pause_text(window, width, height, pause_font):
+def draw_pause_text(window, width, pause_font, pad_text):
     """
     Draw the pause text onto the window.
 
     Parameters:
     - window (pygame.Surface): Pygame window surface.
     - width (int): Width of the Pygame window.
-    - height (int): Height of the Pygame window.
+    - pad_text (int): Padding to Add on Pause text.
 
     Returns:
     None
     """ 
     pause_text = pause_font.render('|| Pause',True, WHITE_COLOR)
-    text_x = width - pause_text.get_width() - 15  # Adjusted for some padding
-    text_y = height - pause_text.get_height() - 15 
-    window.blit(pause_text, (text_x, 0))
+    text_x = width - pause_text.get_width() - pad_text - 10  # Extra Padding
+    text_y = pad_text
+    window.blit(pause_text, (text_x, text_y))
 
 def handle_events(event, run, paused):
     """
@@ -161,7 +173,7 @@ def display_paused_state(window, static_surface, width, height, pause_font):
     None
     """
     window.blit(static_surface, (0, 0))
-    draw_pause_text(window, width, height, pause_font)
+    draw_pause_text(window, width, pause_font, 50)
     pg.display.update()
 
 def simulator(simulation_fps, window, width, height, name_font, dist_font, pause_font, stars_list, track):
