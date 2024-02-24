@@ -1,4 +1,6 @@
 import pickle
+import warnings
+warnings.filterwarnings('ignore')
 
 def load_model(model_path):
     """
