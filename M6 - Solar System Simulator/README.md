@@ -23,7 +23,7 @@ This Python-based Solar System Simulator provides a dynamic and visually appeali
 3. Install dependencies: `pip install -r requirements.txt`
 
 ## Simulator Setup ⚙️
-1. Add Solar System body in the simulator using [`create_bodies.py`](https://github.com/SpartificialUdemy/PSA/blob/main/M6%20-%20Solar%20System%20Simulator/create_bodies.py). You can add by using `add_solar_system_body`.
+1. Add Solar System body in the simulator using [`create_bodies.py`](https://github.com/SpartificialUdemy/PSA/blob/main/M6%20-%20Solar%20System%20Simulator/create_bodies.py). You can add by using [`add_solar_system_body`](https://github.com/SpartificialUdemy/PSA/blob/main/M6%20-%20Solar%20System%20Simulator/simulation.py#L61).
 2. Feel free to change the simulation parameters using [`parameters.py`](https://github.com/SpartificialUdemy/PSA/blob/main/M6%20-%20Solar%20System%20Simulator/parameters.py) depending on your system.
 3. You can Add/Remove colors for the solar system bodies using [`colors.py`](https://github.com/SpartificialUdemy/PSA/blob/main/M6%20-%20Solar%20System%20Simulator/colors.py) depending on your preferences.
 4. Run the simulator: `python main.py`
