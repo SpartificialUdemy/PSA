@@ -3,6 +3,13 @@
 🔸 Welcome to the Star Type Prediction API!<br>
 🔸 This project deploys a Logistic Regression model as an API using FastAPI.
 
+
+## 📹 Testing API on UY Scuti Star 
+
+https://github.com/SpartificialUdemy/PSA/assets/159199442/f1085c65-2f3a-4d36-bdd5-134f2e9131dc
+
+or [Watch it on YouTube](https://www.youtube.com/watch?v=JDmhYcpCt0A)
+
 ## ⚙️ Setup
 Follow these steps to set up the project on your local machine:
 1. **Clone the Repository:**
