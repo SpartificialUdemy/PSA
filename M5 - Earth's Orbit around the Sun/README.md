@@ -1,3 +1,4 @@
+
 # 1) Problem Statement
 
 * Create a simulation to track the orbit of the Earth around the Sun for a period of 1 year.
@@ -18,11 +19,13 @@
    ## 1.2) Initial Condition
    * Earth is at its Perihelion (closest to Sun)
    
-   ## 1.3) Simulated Output
-   * Take a look at the Simulated Orbit of the Earth:-                                    
-<img src="earth_orbit.png" alt="Orbit of the Earth" width=50%>
+   ## 1.3) Demo Video showing the Output
 
+   [Uploading Simulating a Planet around the Sun.mp4…](https://github.com/SpartificialUdemy/PSA/assets/159199442/bd354e00-93f3-46e9-8745-7d535a414667
+)
 
+   or [Watch it on YouTube](https://www.youtube.com/watch?v=uLSkxrf6pFc)
+  
 ---
 
 # 2) Setup:- Simulate any Planet's Orbit in our Solar System
