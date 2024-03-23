@@ -1,7 +1,9 @@
 # 🌍 Solar System Simulator using Pygame ☀️
 
 * Welcome to the Solar System Simulator project! 
-* Explore the wonders of our solar system right from your computer! 
+* Explore the wonders of our solar system right from your computer!
+
+[![Solar System Simulator](http://img.youtube.com/vi/WyD10yUt2eo/0.jpg)](http://www.youtube.com/watch?v=WyD10yUt2eo "Video Title")
 
 ## Overview 🌌
 This Python-based Solar System Simulator provides a dynamic and visually appealing representation of the inner solar system, featuring the Sun and four terrestrial planets. Built with Pygame, this project combines simplicity with accuracy, allowing users to explore the orbital dynamics of our Solar System.
